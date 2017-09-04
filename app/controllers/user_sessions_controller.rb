@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password])
-      redirect_back_or_to(user_path(@user), notice: "login successful")
+      redirect_back_or_to(user_path(@user), notice: "ログインしました")
     else
       flash.now[:alert] = "login feiled"
       render action: 'new'
@@ -16,6 +16,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to(:users, notice: "logged out")
+    redirect_to(:login, notice: "ログアウトしました")
   end
 end

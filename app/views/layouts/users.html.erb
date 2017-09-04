@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Users Layout</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div id="nav">
+      <% if current_user %>
+        <%= link_to "基本情報を編集する", edit_user_path(current_user.id) %>
+        <%= link_to "ログアウト", :logout, method: :post %>
+      <% else %>
+        <%= link_to "ログイン", :login %>
+      <% end %>
+    </div>
+
+    <div>
+      <p id="notice">
+        <%= flash[:notice] %>
+      </p>
+      <p id="alert">
+        <%= flash[:alert] %>
+      </p>
+    </div>
+
+    <%= yield %>
+  </body>
+</html>
