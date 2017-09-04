@@ -5,8 +5,9 @@ Rails.application.routes.draw do
 
   resources :user_sessions
   resources :users
-  resources :sites
-  resources :products
+  resources :sites do
+    resources :products
+  end
   
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
