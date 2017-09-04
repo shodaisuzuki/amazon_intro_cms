@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<h1>
+  <%= @site.name %>の商品
+</h1>
+
+
+<h2>
+  <%= link_to '商品の追加', new_product_path %>  
+</h2>  
 
 <table>
   <thead>
@@ -31,7 +38,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Product', new_product_path %>
