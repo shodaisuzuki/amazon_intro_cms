@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  resources :products
-  resources :sites
+
   root :to => 'users#index'
 
   resources :user_sessions
   resources :users
-  resources :sites do
-    resources :products
+  resources :sites
+  scope 'site/:site' do
+    resources :products do
+      resources :product_tags, :as => :tags
+    end
+    resources :tags
   end
   
   get 'login' => 'user_sessions#new', :as => :login
