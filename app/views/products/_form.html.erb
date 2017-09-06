@@ -1,4 +1,5 @@
-<%= form_with(model: product, local: true) do |form| %>
+<%= form_with(model: @product, local: true) do |form| %>
+
   <% if product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -12,8 +13,11 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :site_id %>
-    <%= form.text_field :site_id, id: :product_site_id %>
+    <%= form.hidden_field :site_id, id: :product_site_id, :value => @site.id %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :product_id, id: :product_id, :value => @product.id %>
   </div>
 
   <div class="field">
@@ -33,12 +37,27 @@
 
   <div class="field">
     <%= form.label :image %>
-    <%= form.text_field :image, id: :product_image %>
+    <%= form.attachment_field :image %>
   </div>
+
+  
+  <% if @product.image %>
+    <div class="field">
+      <%= attachment_image_tag product, :image, :fill, 100, 100, format: 'jpeg' %>
+      <%= form.label :削除する %>
+      <%= form.check_box :remove_image %>
+    </div>
+  <% end %>
+  
 
   <div class="field">
     <%= form.label :release_status %>
     <%= form.check_box :release_status, id: :product_release_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amazon_id %>
+    <%= form.text_field :amazon_id, id: :product_title %>
   </div>
 
   <div class="actions">

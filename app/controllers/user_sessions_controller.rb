@@ -9,8 +9,7 @@ class UserSessionsController < ApplicationController
     if @user = login(params[:email], params[:password])
       redirect_back_or_to(user_path(@user), notice: "ログインしました")
     else
-      flash.now[:alert] = "login feiled"
-      render action: 'new'
+      redirect_to(:login, alert: "メールアドレスまたはパスワードが不正です")
     end
   end
 
