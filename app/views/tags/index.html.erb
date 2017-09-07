@@ -9,7 +9,7 @@
   </thead>
 
   <tbody>
-    <% @site.tags.each do |tag| %>
+    <% @tags.each do |tag| %>
       <tr>
         <td><%= tag.name %></td>
         <td><%= link_to '削除', tag_path(@site, tag), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>

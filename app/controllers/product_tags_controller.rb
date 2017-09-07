@@ -7,6 +7,7 @@ class ProductTagsController < ApplicationController
   # GET /product_tags.json
   def index
     @product_tags = ProductTag.all
+    @product_tag = ProductTag.new
   end
 
   # GET /product_tags/1
@@ -30,7 +31,7 @@ class ProductTagsController < ApplicationController
 
     respond_to do |format|
       if @product_tag.save
-        format.html { redirect_to site_product_tags_path, notice: 'タグを追加しました' }
+        format.html { redirect_to product_tags_path, notice: 'タグを設定しました' }
         format.json { render :show, status: :created, location: @product_tag }
       else
         format.html { render :new }
@@ -44,7 +45,7 @@ class ProductTagsController < ApplicationController
   def update
     respond_to do |format|
       if @product_tag.update(product_tag_params)
-        format.html { redirect_to @product_tag, notice: 'Product tag was successfully updated.' }
+        format.html { redirect_to @product_tag, notice: 'タグの設定を解除しました' }
         format.json { render :show, status: :ok, location: @product_tag }
       else
         format.html { render :edit }
@@ -58,7 +59,7 @@ class ProductTagsController < ApplicationController
   def destroy
     @product_tag.destroy
     respond_to do |format|
-      format.html { redirect_to product_tags_url, notice: 'Product tag was successfully destroyed.' }
+      format.html { redirect_to product_tags_url, notice: 'タグの設定を解除しました' }
       format.json { head :no_content }
     end
   end

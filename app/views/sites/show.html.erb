@@ -1,16 +1,212 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile - Free Bulma template</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.0/css/bulma.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/profile.css">
+</head>
+<body>
 
-<p>
-  <strong>サイト名:</strong>
-  <%= @site.name %>
-</p>
+  <section class="hero is-primary is-medium">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title is-2">
+          <%= @site.name %>
+        </h1>
+        <h2 class="subtitle is-4">
+          <%= @site.caption %>
+        </h2>
+      </div>
+    </div>
+  </section>
+  <br>
+  <div class="container profile">
+    <div class="box">
+      <!-- Main container -->
+      <nav class="level">
+        <!-- Left side -->
+        <div class="level-left">
+          <div class="level-item">
+            <p class="subtitle is-5">
+              <strong>タグで絞り込み</strong>
+            </p>
+          </div>
+        </div>
 
-<p>
-  <strong>Caption:</strong>
-  <%= @site.caption %>
-</p>
+        <!-- Right side -->
+        <div class="level-right">
+          <div class="tags">
+            <% @tags.each do |tag| %>
+              <span class="tag is-danger">
+                <%= tag.name %>
+              </span>
+            <% end %>
+          </div>
+        </div>
 
-<p>
-  <strong>Release status:</strong>
-  <%= @site.release_status %>
-</p>
+      </nav>
+    </div>
+
+    <div class="spacer"></div>
+
+
+      <div class="columns">
+
+          <% @products.each do |product| %>
+            <div class="column is-3">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <%= attachment_image_tag product, :image, :fill, 300, 225, format: 'jpeg' %>
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    <strong class="subtitle">
+                      <%= product.title %>
+                    </strong>
+                    <span class="subtitle">
+                      <%= product.title %>
+                    </span>
+                    
+                  </div>
+                </div>
+                <footer class="card-footer">
+                    <%= link_to "詳細", product_path(@site, product), :class=> "card-footer-item" %>
+                  <% if current_user == @site.user %>
+                    <%= link_to "編集", edit_product_path(@site, product), :class=> "card-footer-item" %>
+                    <%= link_to "タグ", product_tags_path(@site, product), :class=> "card-footer-item" %>
+                  <% end %>
+    
+                </footer>
+              </div>
+              <br>
+            </div>
+          <% end %>
+          <!-- <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="http://placehold.it/300x225" alt="">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <span class="tag is-dark">#webdev</span>
+                <strong class="timestamp">2 d</strong>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a class="card-footer-item">Save</a>
+              <a class="card-footer-item">Edit</a>
+              <a class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+          <br>
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="http://placehold.it/300x225" alt="">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <span class="tag is-dark">#webdev</span>
+                <strong class="timestamp">2 d</strong>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a class="card-footer-item">Save</a>
+              <a class="card-footer-item">Edit</a>
+              <a class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+          <br>
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="http://placehold.it/300x225" alt="">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <span class="tag is-dark">#webdev</span>
+                <strong class="timestamp">2 d</strong>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a class="card-footer-item">Save</a>
+              <a class="card-footer-item">Edit</a>
+              <a class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+          <br>
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="http://placehold.it/300x225" alt="">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <span class="tag is-dark">#webdev</span>
+                <strong class="timestamp">2 d</strong>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a class="card-footer-item">Save</a>
+              <a class="card-footer-item">Edit</a>
+              <a class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+          <br>
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="http://placehold.it/300x225" alt="">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <span class="tag is-dark">#webdev</span>
+                <strong class="timestamp">2 d</strong>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a class="card-footer-item">Save</a>
+              <a class="card-footer-item">Edit</a>
+              <a class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+          <br>
+        </div> 
+        <div class="column is-3">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="http://placehold.it/300x225" alt="">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <span class="tag is-dark">#webdev</span>
+                <strong class="timestamp">2 d</strong>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a class="card-footer-item">Save</a>
+              <a class="card-footer-item">Edit</a>
+              <a class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+          <br>        
+        </div> -->
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,4 +1,5 @@
 class SitesController < ApplicationController
+  skip_before_action :require_login, only: [:index, :show]
   before_action :set_site, only: [:show, :edit, :update, :destroy]
   before_action :set_user
 
@@ -8,9 +9,9 @@ class SitesController < ApplicationController
     @sites = Site.all
   end
 
-  # GET /sites/1
-  # GET /sites/1.json
   def show
+    @products = @site.products.where(release_status: true).take(6)
+    @tags = @site.tags.all
   end
 
   # GET /sites/new

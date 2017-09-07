@@ -1,33 +1,76 @@
-<p id="notice"><%= notice %></p>
+<div class="section product-header">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <span class="title is-3">
+          <%= @site.name %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-6">
+        <div class="image is-2by2">
+          <%= attachment_image_tag @product, :image, :fill, 1000, 1000, format: 'jpeg' %>
+        </div>
+      </div>
+      <div class="column is-5 is-offset-1">
+        <div class="title is-2">
+          <%= @product.title %>
+        </div>
+        <% @tags.each do |tag| %>
+          <span class="tag is-danger">
+            <%= tag.name %>
+          </span>
+        <% end %>
+        <hr>
+        <p>
+          <%= @product.introduction %>
+        </p>
+        <br>
+        <p class="title is-5 has-text-muted">
+          <%= @product.price.to_s(:delimited) %>円
+        </p>
 
-<p>
-  <strong>Amazon_id:</strong>
-  <%= @product.amazon_id %>
-</p>
+        <%= link_to "amazonで見る", "https://www.amazon.co.jp/gp/product/#{@product.amazon_id}", :class => "button is-warning" %>
+        <br>
+        
+      </div>
+    </div>
+    <div class="box">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-64x64">
+            <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
+          </figure>
+        </div>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+              <br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+            </p>
+          </div>
+          <nav class="level is-mobile">
+            <div class="level-left">
+              <a class="level-item">
+                <span class="icon is-small"><i class="fa fa-reply"></i></span>
+              </a>
+              <a class="level-item">
+                <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+              </a>
+              <a class="level-item">
+                <span class="icon is-small"><i class="fa fa-heart"></i></span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
-
-<p>
-  <strong>Introduction:</strong>
-  <%= @product.introduction %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= @product.image %>
-</p>
-
-<p>
-  <strong>Release status:</strong>
-  <%= @product.release_status %>
-</p>
-
-<%= link_to '編集', edit_site_product_path(@site, @product) %>

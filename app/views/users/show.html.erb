@@ -1,3 +1,5 @@
+マイページ
+
 <p>
   <strong>ID:</strong>
   <%= @user.id %>
@@ -8,10 +10,12 @@
   <%= @user.email %>
 </p>
 
-<h1>サイト一覧</h1>
 <h2>
+　<%= link_to "基本情報を編集する", edit_user_path(current_user.id) %>
   <%= link_to '新規サイト作成', new_site_path %>  
 </h2>
+
+<h1>サイト一覧</h1>
 
 <table>
   <thead>
@@ -29,9 +33,10 @@
         <td><%= site.name %></td>
         <td><%= site.caption %></td>
         <td><%= site.release_status %></td>
-        <td><%= link_to '詳細', site_path(site)%></td>
-        <td><%= link_to '編集', edit_site_path(site) %></td>
-        <td><%= link_to '削除', site_path(site), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+        <td><%= link_to 'サイトへ移動', site_path(site)%></td>
+        <td><%= link_to 'サイト情報を編集', edit_site_path(site) %></td>
+        <%= link_to '商品の設定', products_path(site) %>
+        <%= link_to 'タグの管理', tags_path(site) %>
       </tr>
     <% end %>
   </tbody>

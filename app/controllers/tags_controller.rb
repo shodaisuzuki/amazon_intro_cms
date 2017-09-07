@@ -6,7 +6,7 @@ class TagsController < ApplicationController
   # GET /tags.json
   def index
     @tag = Tag.new
-    @tags = Tag.all
+    @tags = @site.tags.all
   end
 
   # GET /tags/1
@@ -69,7 +69,7 @@ class TagsController < ApplicationController
     end
 
     def set_site
-      @site = Site.find(params[:site])
+      @site = Site.find(params[:site_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

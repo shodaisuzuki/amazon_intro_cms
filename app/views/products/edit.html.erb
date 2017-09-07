@@ -2,3 +2,4 @@
 
 <%= render 'form', product: @product %>
 
+<td><%= link_to '削除', product_path(@site, @product), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>

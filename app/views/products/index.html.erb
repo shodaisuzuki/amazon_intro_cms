@@ -1,4 +1,7 @@
-<h1>
+<!-- いらない -->
+
+
+<!-- <h1>
   <%= @site.name %>の商品
 </h1>
 
@@ -29,11 +32,11 @@
         <td><%= product.amazon_id %></td>
         <td><%= attachment_image_tag product, :image, :fill, 100, 100, format: 'jpeg' %></td>
         <td><%= product.release_status %></td>
-        <td><%= link_to '詳細', product_path(@site, product) %></td>
+        <td><%= link_to '公開ページへ移動', product_path(@site, product) %></td>
         <td><%= link_to '編集', edit_product_path(@site, product) %></td>
-        <td><%= link_to '削除', product_path(@site, product), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
-        <td><%= link_to 'タグ', tags_path(@site, product) %></td>
+        <td><%= link_to 'タグ設定', tags_path(@site, product) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+ -->

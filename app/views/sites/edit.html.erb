@@ -2,5 +2,4 @@
 
 <%= render 'form', site: @site %>
 
-<%= link_to '商品の設定', products_path(@site) %>
-<%= link_to 'タグの管理', tags_path(@site) %>
+<td><%= link_to '削除', site_path(@site), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
