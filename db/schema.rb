@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905024555) do
+ActiveRecord::Schema.define(version: 20170905052056) do
 
   create_table "product_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "tag_id"
@@ -26,11 +26,12 @@ ActiveRecord::Schema.define(version: 20170905024555) do
     t.string "title"
     t.text "introduction"
     t.integer "price"
-    t.string "image"
+    t.string "image_id"
     t.boolean "release_status"
     t.integer "amazon_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["image_id"], name: "index_products_on_image_id", unique: true
     t.index ["site_id"], name: "index_products_on_site_id"
   end
 

@@ -7,7 +7,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.integer :price
       t.string :image_id
       t.boolean :release_status
-      t.integer :amazon_id
+      t.string :amazon_id
 
       t.timestamps
     end
