@@ -1,35 +1,21 @@
 <%= form_with(model: @site, local: true) do |form| %>
-  <% if site.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(site.errors.count, "error") %> prohibited this site from being saved:</h2>
-
-      <ul>
-      <% site.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div lass="field">
+  <div class="box">
     <%= form.hidden_field :user_id, :value => @user.id %>
-  </div> 
-  <div class="field">
-    <%= form.label :サイト名 %>
-    <%= form.text_field :name, id: :site_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :サイト説明文 %>
-    <%= form.text_area :caption, id: :site_caption %>
-  </div>
-
-  <div class="field">
-    <%= form.label :公開 %>
-    <%= form.check_box :release_status, id: :site_release_status %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <%= form.label :サイト名, :class => "label" %>
+    <p class="control">
+      <%= form.text_field :name, :class => "input", placeholder: "name.." %>
+    </p>
+    <%= form.label :サイト説明, :class => "label" %>
+    <p class="control">
+      <%= form.text_area :caption, :class => "textarea",placeholder: "10 lines of textarea", rows: "10" %>
+    </p>
+    <%= form.label :公開ステータス, :class => "label" %>
+    <p class="control">
+      <%= form.check_box :release_status, :class => "checkbox" %>
+    </p>
+    <hr>
+    <p class="control">
+      <%= form.submit "submit", data: { disable_with: "sending..."}, :class => "button is-primary" %>
+    </p>
   </div>
 <% end %>

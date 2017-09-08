@@ -1,5 +1,14 @@
-<h1>基本情報</h1>
-
-<%= render 'form', user: @user %>
-
-<%= link_to 'マイページへ戻る', user_path(@user) %>
+<section class="hero is-fullheight is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-4 is-offset-4">
+          <h1 class="title">
+            ユーザ情報編集
+          </h1>
+          <%= render 'form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,7 +1,17 @@
-<h1>ログイン</h1>
-
-<%= render 'form' %>
-
-<!-- TODO:リンク先のパスをサイト一覧へ変更 -->
-<%= link_to 'トップページ', user_sessions_path %> 
-
+<section class="hero is-fullheight is-dark is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-4 is-offset-4">
+          <h1 class="title">
+            ログイン
+          </h1>
+          <%= render 'form' %>
+          <p class="has-text-centered">
+            <%= link_to 'サイト一覧へ移動する', sites_path(@user), :class => "subtitle" %> 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

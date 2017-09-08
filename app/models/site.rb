@@ -3,4 +3,5 @@ class Site < ApplicationRecord
 
   has_many :tags, dependent: :destroy
   has_many :products, dependent: :destroy
+
 end

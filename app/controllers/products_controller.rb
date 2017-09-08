@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_site, only: [:index, :show, :new, :edit, :update, :destroy]
   before_action :site_owner?, except: [:show]
+
   # GET /products
   # GET /products.json
   def index
@@ -12,6 +13,8 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @tags = @product.product_tags
+    #TODO: @productと同じタグのproductsを返すメソッド追加
+    @products = @site.products.all.page(params[:page]).per(4)
   end
 
   # GET /products/new

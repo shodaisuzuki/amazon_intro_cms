@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
     if @user = login(params[:email], params[:password])
       redirect_back_or_to(user_path(@user), notice: "ログインしました")
     else
-      redirect_to(:login, alert: "メールアドレスまたはパスワードが不正です")
+      redirect_to(login_path, alert: "メールアドレスまたはパスワードが不正です")
     end
   end
 

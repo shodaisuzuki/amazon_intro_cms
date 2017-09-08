@@ -1,7 +1,15 @@
 class SitesController < ApplicationController
   skip_before_action :require_login, only: [:index, :show]
-  before_action :set_site, only: [:show, :edit, :update, :destroy]
+  before_action :set_site, only: [:tag_search, :show, :edit, :update, :destroy]
   before_action :set_user
+
+  def tag_search
+    #TODO: tag_idに紐づくproductsを返す
+    @products = @site.products.page(params[:page])
+    @products_count = @site.products.all.count
+    @tag = Tag.find(params[:tag_id])
+    @tags = @site.tags.all
+  end
 
   # GET /sites
   # GET /sites.json
@@ -10,7 +18,7 @@ class SitesController < ApplicationController
   end
 
   def show
-    @products = @site.products.where(release_status: true).take(6)
+    @products = @site.products.where(release_status: true).page(params[:page])
     @tags = @site.tags.all
   end
 
@@ -27,7 +35,6 @@ class SitesController < ApplicationController
   # POST /sites.json
   def create
     @site = Site.new(site_params)
-
     respond_to do |format|
       if @site.save
         format.html { redirect_to user_path(@user), notice: 'サイトを作成しました' }
