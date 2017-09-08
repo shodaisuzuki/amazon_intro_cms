@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :set_site, only: [:index, :show, :new, :edit, :update, :destroy]
+  before_action :set_site, only: [:index, :show,:create, :new, :edit, :update, :destroy]
+  before_action :set_user, only: [:new, :create]
   before_action :site_owner?, except: [:show]
 
   # GET /products
@@ -34,7 +35,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to products_path(@site), notice: '商品の作成に成功しました' }
+        format.html { redirect_to user_path(@user), notice: '商品の作成に成功しました' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -75,6 +76,10 @@ class ProductsController < ApplicationController
 
     def set_site
       @site = Site.find(params[:site_id])
+    end
+
+    def set_user
+      @user = @site.user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

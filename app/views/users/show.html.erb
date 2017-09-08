@@ -44,6 +44,7 @@
               <th></th>
               <th></th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tfoot>
@@ -51,6 +52,7 @@
               <th>サイト名</th>
               <th>紹介文</th>
               <th>公開</th>
+              <th></th>
               <th></th>
               <th></th>
               <th></th>
@@ -65,6 +67,7 @@
                 <td><%= link_to 'サイトへ移動', site_path(site)%></td>
                 <td><%= link_to 'サイト情報を編集', edit_site_path(site) %></td>
                 <td><%= link_to 'タグの管理', tags_path(site) %></td>
+                <td><%= link_to '商品を追加する', new_product_path(site) %></td>
               </tr>
             <% end %>
           </tbody>
